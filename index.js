@@ -12,6 +12,7 @@ client.categories = fs.readdirSync('./commands/');
 
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false);
+mongoose.set('createIndexes', true)
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {

@@ -17,6 +17,6 @@ R6.stats(username, plattform).then(response => {
 })
 
 
-
+  
   },
 };
