@@ -10,13 +10,13 @@ module.exports = {
 const username = args[0]
 const plattform = args[1]
 
-R6.stats(username, plattform).then(response => {
-    console.log(response);
+await R6.stats(username, plattform).then(response => {
+    message.channel.send(response)
 }).catch(error =>{
     console.log(error);
 })
 
 
-  
+
   },
 };
