@@ -1,5 +1,5 @@
 const R6Api = require('r6-discord')
-const R6 = R6Api();
+const R6 = new R6Api();
 module.exports = {
   name: "r6",
   category: "gamestats",
