@@ -83,10 +83,21 @@ module.exports = {
     }
 
     if(!args[0]) return message.channel.send('Debes agregr un link de yt')
-    let video = await youtube.getVideo(args[0])
-    console.log(video);
 
-    handleVideo(video, false)
+    let video;
+
+    if(ytdl.validateURL(args[0])){
+        video = await youtube.getVideo(args[0])
+        console.log(video);
+
+    } else {
+        let song = args.join(' ')
+        videos = youtube.searchVideos(song, 10)
+        console.log(videos);
+    }
+    
+
+    //handleVideo(video, false)
 
   },
 };
