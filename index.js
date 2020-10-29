@@ -7,6 +7,7 @@ const db   = process.env.MONGODB_URI;
 
 client.commands = new Collection();
 client.aliases = new Collection();
+client.queue = new Map()
 
 client.categories = fs.readdirSync('./commands/');
 
