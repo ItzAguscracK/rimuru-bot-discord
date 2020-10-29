@@ -82,10 +82,10 @@ module.exports = {
 
     }
 
-    if(args[0]) return message.channel.send('Debes agregr un link de yt')
+    if(!args[0]) return message.channel.send('Debes agregr un link de yt')
     let video = await youtube.getVideo(args[0])
     console.log(video);
-    
+
     handleVideo(video, false)
 
   },
