@@ -14,7 +14,7 @@ module.exports = {
     if(serverQueue && serverQueue.playing){
         serverQueue.playing = false
         console.log('En pausa');
-        serverQueue.connection.dispatcher.pause()
+        serverQueue.connection.dispatcher.pause(true)
     }
 
 
