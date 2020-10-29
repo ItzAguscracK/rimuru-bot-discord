@@ -17,10 +17,7 @@ module.exports = {
           serverQueue.connection.dispatcher.resume()
           message.channel.send('Cancion pausada')
       }
-  
-      message.channel.send('No hay canciones detenidas')
-  
-      
+ 
     },
   };
   
