@@ -11,10 +11,6 @@ const GuildConfigSchema = new mongoose.Schema({
         required: true,
         default: 'r!',
     },
-    defaultRole: {
-        type: mongoose.SchemaTypes.String,
-        required: false,
-    },
     memberWelcomeChannel: {
         type: mongoose.SchemaTypes.String,
         required: false,
