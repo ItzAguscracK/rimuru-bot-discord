@@ -22,12 +22,10 @@ module.exports = {
         return;
     }
 
-    if (!autor){
-      message.delete({ timeout: 5000})
-      message.channel.send("No puedes hackearte a ti mismo").then( m => {
-          m.delete({ timeout: 5000 })
-      });
-  }
+    if(usuario = autor) return message.channel.send("No puedes hackearte a ti mismo").then( m => {
+      m.delete({ timeout: 5000 })
+  });
+ 
     let ip = chance.ip();
     let numero = chance.phone({ country: 'us', mobile: true});
     let correo = chance.email({domain: correos});

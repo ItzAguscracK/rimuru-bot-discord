@@ -10,7 +10,7 @@ module.exports = {
     if (!message.member.hasPermission("MANAGE_GUILD")) {
       return message.channel.send("No tienes permisos para esto");
     }
-    console.log("hola");
+
     let canal = message.mentions.channels.first();
 
     if (!canal) {
