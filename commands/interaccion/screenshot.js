@@ -1,9 +1,10 @@
 const puppeteer = require('puppeteer')
 module.exports = {
   name: "screenshot",
+  aliases: ['ss'],
   category: "interaccion",
   description: "Haz una screenshot a una página web.",
-  usage: `ping`,
+  usage: `screenshot <webSite>`,
   run: async (client, message, args) => {
 
 

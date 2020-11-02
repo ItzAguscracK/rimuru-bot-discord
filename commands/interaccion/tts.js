@@ -2,7 +2,7 @@ const discordTTS = require("discord-tts");
 module.exports = {
   name: "tts",
   category: "interaccion",
-  description: "Comando decir pero en audio.",
+  description: "Comando say pero en audio.",
   usage: `tts <mensaje>`,
   run: async (client, message, args) => {
 
