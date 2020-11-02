@@ -17,12 +17,11 @@ function getAll(client, message) {
     .setColor(process.env.COLOR)
     .setTitle('Lista de comandos')
     .setThumbnail(client.user.avatarURL())
-    .setFooter(`Informacion solicitada por ${message.author.username}`)
     
     const commands = (category) => {
         return client.commands
             .filter(cmd => cmd.category === category)
-            .map(cmd => ` \`${(process.env.PREFIX) + cmd.name}\``)
+            .map(cmd => ` \`${cmd.name}\``)
             .join(', ');
     }
 
