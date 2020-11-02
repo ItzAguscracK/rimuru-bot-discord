@@ -2,8 +2,6 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "eval",
-  description: "Obten el avatar de los demas usuarios o el tuyo.",
-  usage: `eval [mencion]`,
   run: async (client, message, args) => {
     if (message.author.id !== "388078189618135041") {
       let embed = new MessageEmbed() //Creamos el embed

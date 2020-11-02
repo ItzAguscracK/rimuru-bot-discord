@@ -2,8 +2,8 @@ const { Client, Collection } = require('discord.js');
 const { config } = require('dotenv');
 const fs = require('fs');
 const mongoose = require('mongoose');
-const client = new Client();
-const db   = process.env.MONGODB_URI;
+const client = new Client({ ws: { properties: { $browser: "Discord Android" }}})
+const db   = 'mongodb+srv://db_user:99wanterronyes@cluster-db-discord.mbqup.gcp.mongodb.net/RimuruProject?' ||process.env.MONGODB_URI;
 
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -13,10 +13,11 @@ client.categories = fs.readdirSync('./commands/');
 
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true)
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
-    console.log(`DB connected @ ${db}`);
+    console.log(`DB connected`);
   })
 .catch(err => console.error(`Connection error ${err}`));
 

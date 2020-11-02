@@ -1,7 +1,7 @@
 module.exports = {
   name: "say",
   category: "diversion",
-  description: "lalalala.",
+  description: "Comando decir.",
   usage: `say <mensaje>`,
   run: async (client, message, args) => {
     message.delete();
