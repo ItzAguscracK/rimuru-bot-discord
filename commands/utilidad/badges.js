@@ -1,11 +1,10 @@
-const { MessageEmbed } = require("discord.js");
+//const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "badges",
-  category: "utilidad",
-  description: "Obtenga todas las insignias de un usuario.",
-  usage: `badges [mencion]`,
   run: async (client, message, args) => {
 
+    console.log('Alguien ha usado el comando badges');
+    /*
     const users = message.mentions.users.first() || message.author  
 
     const variables = {
@@ -27,7 +26,7 @@ module.exports = {
     const embed = new MessageEmbed()
     .setDescription(users.flags.toArray().map(f=>variables[f]) ? users.flags.toArray().map(f=>variables[f]) : 'No tiene flags')
     return message.channel.send(embed)
-  
+    */
 
   },
 };
