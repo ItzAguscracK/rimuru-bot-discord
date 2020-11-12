@@ -6,7 +6,7 @@ module.exports = {
     if (message.author.id !== "388078189618135041") {
       let embed = new MessageEmbed() //Creamos el embed
         .setDescription(
-          "Solo desarrolladores de **Rimuru#4100**"
+          ":x: Acceso denegado! Unicamente desarrolladores de **Rimuru#4100**"
         );
       message.channel.send(embed).then((m) => m.delete({ timeout: 5000 }));
     }
