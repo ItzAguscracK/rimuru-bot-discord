@@ -11,7 +11,7 @@ module.exports = {
             //return message.author.send("✅ | Te has verificado correctamente");
     
 
-        if(!message.guild.channels.cache.get(`776532020087226369`)) return message.channel.send('Debes estar en el servidor oficial de Rimuru');
+        if(message.guild.channels.cache.get(`776532020087226369`)) return message.channel.send('Debes estar en el servidor oficial de Rimuru');
         
 
         
