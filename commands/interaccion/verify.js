@@ -1,4 +1,5 @@
 const { createCanvas, registerFont } = require('canvas')
+const path = require("path");
 module.exports = {
   name: "verify",
   category: "interaccion",
@@ -10,7 +11,9 @@ module.exports = {
     if (message.channel.id !== "776532020087226369") return;
 
     const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('')
-    registerFont("../../assets/Roboto-Black.ttf", { family: 'Captcha' })
+    const font = path.join(__dirname, "../../assets/Roboto-Black.ttf")
+
+    registerFont(font, { family: 'Captcha' })
 
     const canvas = createCanvas(125, 32)
     const ctx = canvas.getContext('2d')
