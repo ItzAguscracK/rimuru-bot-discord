@@ -1,3 +1,4 @@
+const { createCanvas, registerFont } = require('canvas')
 module.exports = {
   name: "verify",
   category: "interaccion",
@@ -8,74 +9,44 @@ module.exports = {
 
     if (message.channel.id !== "776532020087226369") return;
 
-    let carac =
-      "QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm,.-$%&!?";
+    const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'.split('')
+    registerFont("../../assets/Roboto-Black.ttf", { family: 'Captcha' })
 
-    let cara = carac.charAt(Math.floor(Math.random() * carac.length));
+    const canvas = createCanvas(125, 32)
+    const ctx = canvas.getContext('2d')
+    const text = this.randomText(4)
 
-    let clave = `${cara}${cara}${cara}${cara}${cara}${cara}${cara}${cara}${cara}${cara}${cara}${cara}`;
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.beginPath()
+    ctx.strokeStyle = '#0088cc'
+    ctx.font = '26px Captcha';
+    ctx.rotate(-0.05)
+    ctx.strokeText(text, 15, 26)
 
-    let frases = [
-      "🌊 ¡Me gusta el ritmo de las olas!",
-      "🍎 ¿Tienes una manzana para mí?",
-      "🌤️ Hace un hermoso día afuera.",
-    ];
+    await message.author.send('Tienes 15 segundos para resolver el captcha', {
+        files: [{ attachment: canvas.toBuffer(), name: 'captcha-quiz.png' }]
+    })
 
-    let frase = frases[Math.floor(frases.length * Math.random())];
+    const msgs = await message.channel.awaitMessages(res => res.author.id === message.author.id,{
+        max: 1,
+        time: 15000
+    })
 
-    message.author
-      .send(
-        `${frase} Tu clave de verificación en ${message.guild.name} es \`${clave}\``
-      )
-      .catch(() => {
-        message.channel
-          .send(
-            "¡Al parecer no te puedo enviar mensajes al privado! Asegúrate de tener los MDs activados."
-          )
-          .then((x) => {
-            x.delete(60000);
-          });
-      })
-      .then(() => {
+    if (!msgs.size) return message.channel.send(`${message.author} Oops, el tiempo acabo era \`${text}\`.`)
 
-        message.channel
-          .send(
-            "Te envié tu clave de verificación al privado. Tienes 10 minutos y 3 intentos para escribir tu clave acá o expirara."
-          )
-          .then((x123) => {
-            message.channel
-              .awaitMessages((m1) => m1.author.id == message.author.id, {
-                max: 3,
-                time: 600000,
-                errors: ["time"],
-              })
-              .catch(() => {
-             
-                message.channel
-                  .send(
-                    "¡Has tardado mucho en responder o agotaste tus intentos! Genera otro código e inténtalo de nuevo"
-                  )
-                  .then((x) => {
-                    x.delete(60000);
-                  });
-              })
-              .then((collected) => {
-                if (collected.first().content == clave) {
-                  message.channel.send("Verificado exitosamente");
-                  message.member.roles.add("753759760137977866");
-                  collected.first().delete(60000);
-                  x123.delete(60000);
-                  message.delete(60000);
-                } else {
-                    message.channel
-                    .send("No es tu clave, escribe la correcta.")
-                    .then((x) => {
-                      collected.first().delete(60000);
-                      message.delete(60000);
-                    });
-                }
-              });
-          });
-      });
+    if (msgs.first().content !== text) return message.channel.send(`${message.author} Oops, disculpa era \`${text}\`.`)
+
+    message.member.roles.add('753759760137977866');
+    return message.channel.send(`${message.author} Perfecto, la respuesta si era \`${text}\`.`)
+    
+
+
+    function randomText(len) {
+        const result = []
+        for (let i = 0; i < len; i++)
+        result.push(pool[Math.floor(Math.random() * pool.length)])
+        return result.join('')
+    }
   },
 };
