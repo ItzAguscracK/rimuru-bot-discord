@@ -14,7 +14,7 @@ module.exports = {
     const memeEmbed = new MessageEmbed()
     .setColor("RANDOM")
     .setImage(url)
-    .setFooter(`Solicitado por ${message.author.username}`)
+    .setFooter(`Solicitado por ${author}`)
 
     message.channel.send(memeEmbed);
   },

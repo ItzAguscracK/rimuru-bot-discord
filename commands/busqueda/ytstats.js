@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const fetch = require("node-superfetch");
 module.exports = {
   name: "ytstats",
-  aliases: ["ytsts", "youtubestats", "estadisticasYT"],
+  aliases: ["ytsts"],
   category: "busqueda",
   description: "Obten estadisticas de un canal de YouTube.",
   usage: `ytstats <canalYouTube>`,

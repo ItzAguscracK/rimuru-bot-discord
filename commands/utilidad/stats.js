@@ -1,15 +1,16 @@
 //Importaciones
+//Arreglar
 const Discord = require("discord.js");
 const os = require('os');
 const cpuStat = require('cpu-stat');
 const moment = require("moment");
 require("moment-duration-format");
 const { promisify } = require('util');
-const p = promisify(cpuStat.usagePercent);
+const usagePercent = promisify(cpuStat.usagePercent);
 
 module.exports = {
   name: "stats",
-  category: "info",
+  category: "utilidad",
   description: "Estadisticas del BOT.",
   usage: `stats`,
   run: async (client, message, args) => {
@@ -33,7 +34,7 @@ module.exports = {
     //Node Version
     .addField('• Node.js', `${process.version}`, true)
     //Host Service
-    .addField('• Host', 'Localhost', true)
+    .addField('• Host', process.env.HOST, true)
 
     //Sistema Operativo
     .addField('• OS', `\`\`\`md\n${os.version()}\n${os.release()}\`\`\``)
@@ -42,7 +43,6 @@ module.exports = {
     .addField('• CPU', `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\``)
 
     //Uso de la CPU
-    //.addField('CPU Usage', `\`${percent.toFixed(2)}%\``, true)
     //Arquitectura
     .addField('Arquitectura', `\`${os.arch()}\``, true)
     //PLataforma
@@ -50,7 +50,7 @@ module.exports = {
 
     .setColor("RANDOM")
     .setFooter('Rimuru Stats')
-
+    console.log(cpuStat.usagePercent);
     return message.channel.send(embedStats)
 
 

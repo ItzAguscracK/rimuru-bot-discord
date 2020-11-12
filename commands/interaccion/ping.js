@@ -2,8 +2,8 @@ const { MessageEmbed } = require("discord.js");
 const mongoose = require('mongoose');
 module.exports = {
   name: "ping",
-  category: "info",
-  description: "Obten la latencia del BOT y la API en milisegundos.",
+  category: "interaccion",
+  description: "Obten la latencia del BOT, la API en milisegundos y la Conexion a la Base de Datos.",
   usage: `ping`,
 
   run: async (client, message, args) => {

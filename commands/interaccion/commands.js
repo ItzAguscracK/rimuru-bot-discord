@@ -3,7 +3,7 @@ const { stripIndents } = require('common-tags');
 module.exports = {
     name: 'commands',
     aliases: ['comandos', 'c'],
-    category: 'info',
+    category: 'interaccion',
     description: 'Mustra una lista completa de los comandos del bot.',
     usage: `commands`,
     run: async (client, message) => {

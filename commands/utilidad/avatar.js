@@ -1,8 +1,8 @@
 const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "avatar",
-  category: "info",
-  description: "Obten el avatar de un usuario.",
+  category: "utilidad",
+  description: "Obten tu avatar o el de los demas usuarios.",
   usage: `avatar [mencion]`,
   run: async (client, message, args) => {
 
@@ -13,7 +13,7 @@ module.exports = {
     if(message.mentions.users.first()){
         const embedAvatar = new MessageEmbed()
         .setTitle('Avatar de '+users.username)
-        .setImage(users.displayAvatarURL({ dynamic: true }))
+        .setImage(users.displayAvatarURL({ dynamic: true }, { size: 2048 }))
         .setColor('RANDOM')
         .setFooter('Solicitado por '+message.author.username)
     

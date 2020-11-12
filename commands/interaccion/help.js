@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "help",
   aliases: ["ayuda", "h"],
-  category: "info",
+  category: "interaccion",
   description: "Obtenga informacion del bot y sus comandos.",
   usage: `help [nombreDelComando]`,
   run: async (client, message, args) => {
@@ -22,8 +22,8 @@ function helpMSG(client, message) {
     .setDescription(
       `Para ver la lista completa de comandos, escriba \`${process.env.PREFIX}commands\` \n\nPara ver informacion especifica de un comandos, escriba \`${process.env.PREFIX}help <commando>\` sin \`<>\``
     )
-    .addField("Sobre mi", "Escribir algo hermoso aqui")
-    .addField("Links", "YouTube | Twitter | PayPal | Twitch")
+    .addField("¿Quien Soy?", "Hola! Mi nombre es **Rimuru**, como puedes ver soy un bot de discord desarrollado en JavaScript, mis propositos son totalmente diversos ya que siempre obtengo actualizaciones, pero me especifico en la diversion de los usuarios y proporcionar variedades de caracteristicas <3.")
+    .addField("Links", "[YouTube](https://www.youtube.com/channel/UCsNiNvCb3IH8yt74MTt0gyg) | [Twitter](https://twitter.com/GamerNuu) | [PayPal](https://paypal.me/RimuruGamerDevv)")
     .setFooter(`Solicitado por ${message.author.username}`);
   message.channel.send(embed);
 }

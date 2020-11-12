@@ -1,9 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "badges",
-  category: "info",
+  category: "utilidad",
   description: "Obtenga todas las insignias de un usuario.",
-  usage: `ping`,
+  usage: `badges [mencion]`,
   run: async (client, message, args) => {
 
     const users = message.mentions.users.first() || message.author  
@@ -21,7 +21,7 @@ module.exports = {
         "VERIFIED_DEVELOPER": "<:BotDeveloper:771916349801889832> Desarrollador inicial de bots verificados"
     }
 
-    console.log(users.flags.toArray().length);
+    //console.log(users.flags.toArray().length);
    
     //if(users.flags.toArray().length === '0') return message.channel.send('No tienes flags')
     const embed = new MessageEmbed()

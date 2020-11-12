@@ -6,9 +6,9 @@ module.exports = {
     if (message.author.id !== "388078189618135041") {
       let embed = new MessageEmbed() //Creamos el embed
         .setDescription(
-          "Mmm, no tienes los permisos suficientes para hacer esto"
+          "Solo desarrolladores de **Rimuru#4100**"
         );
-      message.channel.send(embed);
+      message.channel.send(embed).then((m) => m.delete({ timeout: 5000 }));
     }
 
     let toEval = args.join(" "); //Definimos toEval con argumentos
@@ -17,7 +17,7 @@ module.exports = {
       let embed = new MessageEmbed()
         .setDescription("Necesitas evaluar __*ALGO*__")
         .setColor("RANDOM");
-      message.channel.send(embed).then((m) => m.delete(1000));
+      message.channel.send(embed).then((m) => m.delete({ timeout: 5000 }));
     }
     try {
       //Hacemos un try
@@ -31,8 +31,8 @@ module.exports = {
         .setColor("RANDOM")
         .setTimestamp() //Usamos un Timestamp
         .setFooter(client.user.username, client.user.displayAvatarURL)
-        .setTitle(":desktop: NombreBotEval")
-        .setDescription("Este comando sirve para ejecutar codigos")
+        .setTitle(":desktop: Rimuru#4100")
+        .setDescription("Eval")
         .addField(
           "Codigo:",
           "```js\n" + beautify(args.join(" "), { format: "js" }) + "```"
@@ -49,7 +49,7 @@ module.exports = {
           "```js\n" + err + "```"
         ) //Va a aparecer el error
         .setColor("RANDOM");
-      message.channel.send(embed2);
+      message.channel.send(embed2).then((m) => m.delete({ timeout: 15000 }));
     }
   },
 };

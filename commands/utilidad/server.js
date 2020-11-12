@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "server",
   aliases: ['serverinfo'],
-  category: "info",
+  category: "utilidad",
   description: "Obtenga información del servidor.",
   usage: `server`,
   run: async (client, message, args) => {

@@ -5,6 +5,8 @@ const path = require("path");
 const Discord = require("discord.js");
 
 module.exports = async (client, member) => {
+  
+  /* DataBase */
   let can = await welcome.findOne({
     guildId: member.guild.id,
   });
@@ -26,8 +28,7 @@ module.exports = async (client, member) => {
     cosas = Buffer.from(msgDocument.image, "base64");
   }
 
-  //const att = new MessageAttachment(buf, "hola.png");
-
+  /* Canvas */
   const canvas = Canvas.createCanvas(800, 360);
   const ctx = canvas.getContext("2d");
 
@@ -40,7 +41,7 @@ module.exports = async (client, member) => {
   ctx.textAlign = "center";
   ctx.textBaselin = "hanging";
   ctx.fillText(`¡Bienvenido ${member.user.username}!`, canvas.width / 2, 75);
-  ctx.fillText(`¡Ahora somos x usuarios!`, canvas.width / 2, 350);
+  ctx.fillText(`¡Ahora somos ${member.guild.memberCount} usuarios!`, canvas.width / 2, 350);
 
   const y = 100,
     radio = 85,

@@ -2,11 +2,11 @@ const welcome = require("../../models/GuildConfig");
 
 module.exports = {
   name: "setwelcome",
-  aliases: ["welcome", "channelw", "welcomeChannel"],
-  category: "administracion",
+  category: "configuracion",
   description: "Configura el canal de bienvenidas.",
   usage: `setwelcome <canalMencion>`,
   run: async (client, message, args) => {
+
     if (!message.member.hasPermission("MANAGE_GUILD")) {
       return message.channel.send("No tienes permisos para esto");
     }
@@ -30,8 +30,8 @@ module.exports = {
       });
 
       message.channel.send(
-        "El nuevo canal de bienvenidas sera <#" + canal.id + ">."
-      );
+        "Nuevo canal de bienvenidas configurado: <#" + canal.id + ">."
+      ).then((m) => m.delete({ timeout: 10000 }));
     }
 
 
@@ -45,6 +45,6 @@ module.exports = {
 
     let wcanal = message.guild.channels.cache.get(can.memberWelcomeChannel);
 
-    wcanal.send("Este canal sera el de bienvenidas");
+    wcanal.send("Canal de bienvenidas configurado exitosamente\n`Este mensaje se borrara en 10 segundos`").then((m) => m.delete({ timeout: 10000 }));
   },
 };
