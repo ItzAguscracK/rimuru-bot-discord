@@ -41,7 +41,7 @@ module.exports = {
     if (msgs.first().content !== text) return message.channel.send(`:x: | ERROR ${message.author}, respuesta incorrecta, la respuesta correcta era: \`${text}\`.`).then((m) => m.delete({ timeout: 10000 }));
 
     message.member.roles.add('753759760137977866');
-    return message.author(`<a:verify:728385619926974545> Verificacion Exitosa! Ya tienes acceso a el servidor!\`${text}\`.`)
+    return message.author.send(`<a:verify:728385619926974545> Verificacion Exitosa! Ya tienes acceso a el servidor!\`${text}\`.`)
     
     function randomText(len) {
         const result = []
