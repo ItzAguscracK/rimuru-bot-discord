@@ -17,7 +17,7 @@ module.exports = {
 
     const canvas = createCanvas(125, 32)
     const ctx = canvas.getContext('2d')
-    const text = this.randomText(4)
+    const text = randomText(4)
 
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
