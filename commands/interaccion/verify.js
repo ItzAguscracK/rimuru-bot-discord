@@ -27,24 +27,22 @@ module.exports = {
     ctx.rotate(-0.05)
     ctx.strokeText(text, 15, 26)
 
-    await message.author.send('Tienes 15 segundos para resolver el captcha', {
+    await message.author.send('Tienes 30 segundos para resolver el captcha', {
         files: [{ attachment: canvas.toBuffer(), name: 'captcha-quiz.png' }]
     })
 
     const msgs = await message.channel.awaitMessages(res => res.author.id === message.author.id,{
         max: 1,
-        time: 15000
+        time: 30000
     })
 
-    if (!msgs.size) return message.channel.send(`${message.author} Oops, el tiempo acabo era \`${text}\`.`)
+    if (!msgs.size) return message.channel.send(`${message.author} Oops, parece que el tiempo para responder ha acabado, la respuesta era: \`${text}\`.`).then((m) => m.delete({ timeout: 10000 }));
 
-    if (msgs.first().content !== text) return message.channel.send(`${message.author} Oops, disculpa era \`${text}\`.`)
+    if (msgs.first().content !== text) return message.channel.send(`:x: | ERROR ${message.author}, respuesta incorrecta, la respuesta correcta era: \`${text}\`.`).then((m) => m.delete({ timeout: 10000 }));
 
     message.member.roles.add('753759760137977866');
-    return message.channel.send(`${message.author} Perfecto, la respuesta si era \`${text}\`.`)
+    return message.author(`<a:verify:728385619926974545> Verificacion Exitosa! Ya tienes acceso a el servidor!\`${text}\`.`)
     
-
-
     function randomText(len) {
         const result = []
         for (let i = 0; i < len; i++)
