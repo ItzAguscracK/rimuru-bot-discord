@@ -13,7 +13,7 @@ module.exports = {
     if(message.mentions.users.first()){
         const embedAvatar = new MessageEmbed()
         .setTitle('Avatar de '+users.username)
-        .setImage(users.displayAvatarURL({ dynamic: true }, { size: 2048 }))
+        .setImage(users.displayAvatarURL({ dynamic: true, size: 520 }))
         .setColor('RANDOM')
         .setFooter('Solicitado por '+message.author.username)
     
@@ -23,7 +23,7 @@ module.exports = {
     } else {
         const embedAutorAvatar = new MessageEmbed()
         .setTitle('Avatar de '+users.username)
-        .setImage(users.displayAvatarURL({ dynamic: true }))
+        .setImage(users.displayAvatarURL({ dynamic: true, size: 512 }))
         .setColor('RANDOM')
         return message.channel.send(embedAutorAvatar)
     }
