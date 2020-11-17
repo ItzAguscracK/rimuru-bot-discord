@@ -10,15 +10,21 @@ module.exports = {
     let web = args.join (" ")
     if (!web) return message.channel.send('**Debes ingresar una pagina web.**').then((m) => m.delete({ timeout: 5000 }));
 
-   const browser = await puppeteer.launch({defaultViewport: {width: 1920, height: 1080}, 
-   args: ['--no-sandbox', '--disable-setuid-sandbox']});
-   
-   const page = await browser.newPage(); 
-   await page.goto(web); 
-   await page.screenshot({path: 'foto.png'}); 
 
-   await browser.close(); 
-   message.channel.send(``, { files: ["foto.png"] }).catch(error =>  
-   message.channel.send(error));
+    try {
+      const browser = await puppeteer.launch({defaultViewport: {width: 1920, height: 1080}, 
+        args: ['--no-sandbox', '--disable-setuid-sandbox']});
+        
+        const page = await browser.newPage(); 
+        await page.goto(web); 
+        await page.screenshot({path: 'foto.png'}); 
+     
+        await browser.close(); 
+        message.channel.send(``, { files: ["foto.png"] }).catch(error =>  
+        message.channel.send(error));
+    } catch (error) {
+      message.channel.send(error)
+      console.log(error);
+    }
   },
 };

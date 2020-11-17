@@ -21,7 +21,7 @@ module.exports = {
         dispatcher.on('finish', () => voiceChannel.leave())
     })
     } catch (error) {
-      message.channel.send('Oops, ocurrio un error, intentalo mas tarde!').then((m) => m.delete({ timeout: 5000 }));
+      message.channel.send('Oops, ocurrio un error, intentalo mas tarde!').then((m) => m.delete({ timeout: 10000 }));
       console.log(error);
     }
   },
