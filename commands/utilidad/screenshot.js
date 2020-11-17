@@ -7,6 +7,8 @@ module.exports = {
   usage: `screenshot <webSite>`,
   run: async (client, message, args) => {
 
+    //Only VPS
+
     let web = args.join (" ")
     if (!web) return message.channel.send('**Debes ingresar una pagina web.**').then((m) => m.delete({ timeout: 5000 }));
 
@@ -18,7 +20,7 @@ module.exports = {
         const page = await browser.newPage(); 
         await page.goto(web); 
         await page.screenshot({path: 'foto.png'}); 
-     
+        
         await browser.close(); 
         message.channel.send(``, { files: ["foto.png"] }).catch(error =>  
         message.channel.send(error));
