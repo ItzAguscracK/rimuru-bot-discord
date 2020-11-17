@@ -13,6 +13,8 @@ module.exports = {
     let usuario = message.mentions.users.first();
     let url = await marsnpm.kill();
 
+    const randomMessages = [`**${author}** asesino a ${usuario}`, `**${author}** ha matado a ${usuario}`, `${usuario} fue asesinado por **${author}**`, `${usuario} ha muerto a manos de ${author}`];
+
     if (!usuario) return message.channel.send(`${autor} debes mencionar a alguien!`);
     
     const killEmbed = new MessageEmbed()

@@ -10,6 +10,8 @@ module.exports = {
 
     let author = message.author.username;
     let url = await marsnpm.like();
+
+    const randomMessages = [`**${author}** aprueba esto`, `Esto le ha gustado a **${author}**`, `**${author}** le da like!`, `Segun **${author}**, esto esta buenisimo`];
     
     const likeEmbed = new MessageEmbed()
     .setDescription(`**${author}** le da like!`)

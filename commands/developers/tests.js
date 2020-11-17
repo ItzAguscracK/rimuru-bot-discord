@@ -5,7 +5,7 @@ module.exports = {
   usage: `tests`,
   run: async (client, message, args) => {
 
-    message.channel.send(':x: | Acceso denegado, unicamente desarrolladores!').then((m) => m.delete({ timeout: 2000 }));
+    message.channel.send(':x: | Acceso denegado, unicamente desarrolladores!').then((m) => m.delete({ timeout: 5000 }));
 
   },
 };
