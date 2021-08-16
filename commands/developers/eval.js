@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "eval",
   run: async (client, message, args) => {
-    if (message.author.id !== "388078189618135041") {
+    if (message.author.id != "388078189618135041") {
       let embed = new MessageEmbed() //Creamos el embed
         .setDescription(
           ":x: Acceso denegado! Unicamente desarrolladores de **Rimuru#4100**"
