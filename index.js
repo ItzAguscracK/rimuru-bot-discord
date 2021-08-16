@@ -1,9 +1,7 @@
 const { Client, Collection, Intents } = require("discord.js");
 const { config } = require("dotenv");
 const fs = require("fs");
-const db =
-  "mongodb+srv://db_user:99wanterronyes@cluster-db-discord.mbqup.gcp.mongodb.net/RimuruProject?" ||
-  process.env.MONGODB_URI;
+//const db = "mongodb+srv://db_user:99wanterronyes@cluster-db-discord.mbqup.gcp.mongodb.net/RimuruProject?" || process.env.MONGODB_URI;
 const mongoose = require("mongoose");
 const client = new Client({
   ws: {
@@ -21,7 +19,7 @@ mongoose.set("useUnifiedTopology", true);
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(() => {
     console.log(`DB connected`);
   })
